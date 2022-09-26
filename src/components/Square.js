@@ -1,11 +1,14 @@
 import React from 'react'
 
-const Square = ({selectSquare, index, space, key}) => {
+const Square = ({selectSquare, index, space, key, playGame}) => {
 
   const handleClick = () => {
-    selectSquare(index)
+    if(playGame){
+      selectSquare(index)
+    }
+    
   } 
-  
+
   return (
     <div className="square" onClick={()=>handleClick()}>
       {space}
