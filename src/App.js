@@ -19,73 +19,51 @@ const App = () => {
       const updateSquare = [...squares]
       if (playerOneTurn) {
         updateSquare[index] = "X"
-        checkScore(index)
+        
         setPlayerOneTurn(false)
       } else {
         updateSquare[index] = "O"
         setPlayerOneTurn(true)
-        checkScore()
+        
       }
       setSquares(updateSquare)
     }
     
   }
 
-  const checkScore = (index) => {
-    alert(squares[index])
-    if (squares[0] === "X" && squares[1] === "X" && squares[2] === "X") {
-      setMessage(<h1> you won</h1>)
-      alert("top")
-      setPlayGame(false)
-    } else if (squares[3] === "X" && squares[4] === "X" && squares[5] === "X") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[6] === "X" && squares[7] === "X" && squares[8] === "X") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[6] === "X" && squares[4] === "X" && squares[2] === "X") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[0] === "X" && squares[4] === "X" && squares[8] === "X") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[0] === "X" && squares[3] === "X" && squares[6] === "X") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[1] === "X" && squares[4] === "X" && squares[7] === "X") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[2] === "X" && squares[5] === "X" && squares[8] === "X") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
+  function calculateWinner(squares) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
+      }
     }
-
-    if (squares[0] === "O" && squares[1] === "O" && squares[2] === "O") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[3] === "O" && squares[4] === "O" && squares[5] === "O") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[6] === "O" && squares[7] === "O" && squares[8] === "O") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[6] === "O" && squares[4] === "O" && squares[2] === "O") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[0] === "O" && squares[4] === "O" && squares[8] === "O") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[0] === "O" && squares[3] === "O" && squares[6] === "O") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[1] === "O" && squares[4] === "O" && squares[7] === "O") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    } else if (squares[2] === "O" && squares[5] === "O" && squares[8] === "O") {
-      setMessage(<h1>you won</h1>)
-      setPlayGame(false)
-    }
+    return null;
   }
+
+if(playGame){
+  if(calculateWinner(squares) === "X") {
+    setMessage(<h1 className="message" >player one won</h1>)
+    setPlayGame(false)
+  }  else if(calculateWinner(squares) === "O"){
+  setMessage(<h1 className="message" >player two won</h1>)
+  setPlayGame(false)
+  // if indexOf cant find null (its value its looking for) then it will just trigger the message
+  } else if (squares.indexOf(null) === -1 ) {
+    setMessage(<h1 className="message" >ran out of turns</h1>)
+    setPlayGame(false)  
+  }
+}
 
 
 
