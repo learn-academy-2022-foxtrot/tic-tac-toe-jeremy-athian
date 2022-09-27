@@ -1,3 +1,18 @@
+body {
+  background-color:black;
+
+
+}
+
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
 .square {
   height: 100px;
   width: 100px;
@@ -7,14 +22,62 @@
   justify-content: center;
   font-size: 5rem;
 }
+
 .board {
   margin-left: auto;
   margin-right: auto;
-display: flex;
-flex-wrap: wrap;
-width: 320px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 312px;
+  background-color: rgb(183, 175, 175);
+  position: relative;
 
 }
+
 h1 {
   text-align: center;
+  color: rgb(228, 58, 58);
+}
+
+h3 {
+  text-align: center;
+  color: rgb(228, 58, 58);
+
+}
+
+.btn {
+padding: 1rem;
+font-size: 1rem;
+font-weight: bold;
+border-radius: 8px;
+}
+.message {
+width: 300px;
+align-items: center;
+justify-content: center;
+position: absolute;
+top: 70px;
+right: -60px;
+border: 5px solid black;
+background-color: rgb(3, 62, 3);
+padding: 3rem;
+z-index: 2;
+margin: 0 auto;
+color: chartreuse;
+}
+
+.choiceContainer{
+display: flex;
+
+}
+.choices {
+width: 50px;
+height: 50px;
+background-color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 1.5rem;
+
+
 }
